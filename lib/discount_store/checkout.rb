@@ -10,6 +10,7 @@ module DiscountStore
     end
 
     def add(item)
+      item = item.to_sym
       raise InvalidItem, "item #{item} doesn't exist" unless rules[item]
 
       items[item] += 1

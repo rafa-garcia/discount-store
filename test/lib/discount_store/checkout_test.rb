@@ -45,6 +45,20 @@ describe DiscountStore::Checkout do
     end
 
     describe 'when the item is known' do
+      it 'accepts a string' do
+        subject.add('item_a')
+
+        _(subject.instance_variable_get(:@items).keys.first)
+          .must_be_instance_of Symbol
+      end
+
+      it 'accepts a symbol' do
+        subject.add(:item_a)
+
+        _(subject.instance_variable_get(:@items).keys.first)
+          .must_be_instance_of Symbol
+      end
+
       it 'adds to the items collection' do
         subject.add(:item_a)
 
