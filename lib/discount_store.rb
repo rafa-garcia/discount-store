@@ -19,12 +19,12 @@ module DiscountStore # :nodoc:
 
   RULES = {
     item_a: PricingRule.new(5_000, Discount.new(:amount, 13_000, 3)),
-    item_b: PricingRule.new(3_000, Discount.new(:amount, 13_000, 3)),
-    item_c: PricingRule.new(2_000),
+    item_b: PricingRule.new(3_000, Discount.new(:amount, 4_500, 2)),
+    item_c: PricingRule.new(2_000, Discount.new(:percent, 10, 3)),
     item_d: PricingRule.new(1_500)
   }.freeze
 
-  def self.basket
-    Checkout.new(RULES)
+  def self.basket(rules = RULES)
+    Checkout.new(rules)
   end
 end
